@@ -1,0 +1,341 @@
+* {
+  margin: 0;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
+:root {
+      -webkit-appearance: none;
+     --navBackground: rgb(52, 73, 94);
+     --formColor: #34495E;
+ }
+
+ body html {
+     margin: 0;
+     font-family: 'Raleway', sans-serif;
+     font-weight: 400;
+     height: 1000px;
+
+ }
+h3 {
+  color: white;
+}
+
+.wrapper {
+  width: 100%;
+}
+.headerContainer {
+  flex: 12;
+  margin: 0;
+  padding: 0;
+  opacity: .7;
+  background: var(--navBackground);
+  justify-content: flex-start;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+.logout {
+  display: none;
+}
+
+.header {
+  display: flex;
+  background: var(--navBackground);
+  width: 100%;
+}
+
+.logindata {
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+img {
+  width:150;
+  height:200px;
+
+}
+input[name="login"]{
+  background-color: var(--navBackground);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+.loginform input[type=submit] {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background: var(--formColor);
+    color: white;
+    padding: 5px 15px;
+    margin-right: 0;
+    margin-top: 15px;
+    border-radius: 3px;
+    text-shadow: 1px 1px opx rgb(0, 0, 0, 0.3);
+  }
+ul.sidenav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  background: var(--navBackground);
+  overflow: auto;
+  opacity: .7;
+}
+
+#menu-box {
+  display: none;
+}
+
+li {
+  color: white;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+ul.sidenav li a {
+  padding: 8px 16px;
+  text-decoration: none;
+}
+ 
+ul.sidenav li a.menu {
+  background: var(--navBackground);
+  position: sticky;
+  opacity: .7;
+}
+
+ul.sidenav li a:hover:not(.active) {
+  background: var(--navBackground);
+  color: red;
+}
+div.row {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom-style: solid;
+  border-color:var(--navBackground);
+  border-bottom-width: 1px;
+}
+div.box {
+  flex:1;
+  margin: 4em;
+}
+div.box1 {
+  flex:2;
+}
+
+:root {
+  --modalColor: #34495E;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.box {
+  border-color: #000;
+  border: 3px;
+}
+
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: var(--modalColor);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+.modalContainer {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+
+div.content {
+  text-align: center;
+  margin-left: 0;
+  padding: 1px 16px;
+  height: auto;
+  background-color: rgb(90, 7, 7);
+}
+
+.barContainer {
+  display: inline-block;
+  cursor: pointer;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background: var(--navBackground);
+  position: sticky;
+  height: 40px;
+  flex: 1;
+  width: 100%;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #FFF;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+  transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+  opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+  transform: rotate(45deg) translate(-8px, -8px) ;
+}
+
+/*----------- begin media------------- */
+
+
+
+@media screen and (max-width: 900px) {
+  ul.sidenav {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  ul.sidenav li a {
+    float: left;
+    padding: 15px;
+  }
+  
+  div.content {
+    position: center;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+  ul.sidenav li a {
+    text-align: center;
+  }
+  img {
+    width:128px;
+    height:150px
+  }
+ 
+  div.content {
+    position: center;
+  }
+}
+
+
