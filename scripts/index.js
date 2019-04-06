@@ -23,18 +23,11 @@ function toggleMenu(x) {
   function append(parent, el) {
     return parent.appendChild(el);
   }
- $(document).ready(function() { 
-    $.ajax({
-      type: "GET",
-      dataType: "json",
-      async: true,
-      url: "http://127.0.0.1/cse201/index.php",
-      data: data,
-      success: function (msg) {
-        console.log(msg);
-      }
-    });
- });
+  
+  function print(data) {
+    $('content').append($("<div id='row'/>"));
+  }
+ 
 
 
   function checkPassword(form) {
