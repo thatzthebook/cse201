@@ -10,7 +10,7 @@
 
         public function defaultBooks(){
             $query = "
-                    SELECT  books.author, books.bookName, libraries.libraryName, books.filePath 
+                    SELECT * 
                     FROM 
                         books
                             JOIN 
@@ -18,6 +18,12 @@
                         ORDER BY books.bookName ;
                     ";
             return $this->con->query($query)->fetchAll();
+        }
+
+        public function getBookInfo($id) {
+            $query = "SELECT * FROM books WHERE bookID = {$id}";
+            return $this->con->query($query)->fetchAll();
+
         }
 
     }
