@@ -1,6 +1,12 @@
 <?php
     class Book {
 
+        private $id;
+        private $bookName;
+        private $author;
+        private $userID;
+
+        private $libraryID;
         private $con;
 
         public function __construct($pdo)
@@ -17,12 +23,14 @@
                         libraries ON books.libraryID = libraries.libraryID
                         ORDER BY books.bookName ;
                     ";
-            return $this->con->query($query)->fetchAll();
+            $results = $this->con->query($query)->fetchAll();
+            return json_encode($results);
         }
 
-        public function getBookInfo($id) {
-            $query = "SELECT * FROM books WHERE bookID = {$id}";
-            return $this->con->query($query)->fetchAll();
+        public function readOne($id) {
+            $stmt = $this->con->prepare("SELECT * FROM books WHERE bookID=:bookID");
+            $stmt->bindParam(":bookID", $id, PDO::PARAM_STR);
+            return json_encode($stmt->fetchAll());
 
         }
 

@@ -5,6 +5,20 @@ function showElement(i) {
     document.getElementById(i).style.display='block';
 }
 
+function showBookInfo(i) {
+    document.getElementById(i).style.display='block';
+    JQuery.getJSON('book/readDefault.php?bookID='+i, function(results) {
+        $('bookinfoContent').append("stuff");
+        $('.bookinfoContent').append("<table class='bookinfoTable'>");
+         $.each(results, function(key, value) {
+             $('.bookinfoTable').append("<tr><td>"+value.bookName+"</td>"+
+               "<td>"+value.author+"</td>"+
+               "<td><img src="+value.filePath+"></td><td>"+
+               value.userID+"</td><td>"+value.libraryName+"</td></tr>");
+         }); 
+       });
+}
+
 // Get the modal
 
 

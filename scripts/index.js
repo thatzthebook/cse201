@@ -11,26 +11,20 @@ function toggleMenu(x) {
       x.classList.toggle("change");
     }
   }
+$.getJSON('book/readDefault.php', function(results) {
+  $('.content').append("<div class='row'></div>");
+  $.each(results, function(key, value) {
+      $('.row').append("<div id='box'><h3>"+value.bookName+"</h3></div>"+
+        "<div id='box'><h3>"+value.author+"<h3></div>"+
+        "<div id='box'><img onclick=\"showBookInfo('bookinfo')\" src="+value.filePath+"></div>");
+  }); 
+});
+
 
  
 
-  
 
-  function createNode(element) {
-    return document.createElement(element);
-  }
-
-  function append(parent, el) {
-    return parent.appendChild(el);
-  }
-  
-  function print(data) {
-    $('content').append($("<div id='row'/>"));
-  }
- 
-
-
-  function checkPassword(form) {
+function checkPassword(form) {
     password1 = form.password.value;
     password2 = form.repassword.value;
 
