@@ -7,8 +7,7 @@ function showElement(i) {
 
 function showBookInfo(i) {
     document.getElementById(i).style.display='block';
-    JQuery.getJSON('book/readDefault.php?bookID='+i, function(results) {
-        $('bookinfoContent').append("stuff");
+    $.getJSON('book/readDefault.php?bookID='+i, function(results) {
         $('.bookinfoContent').append("<table class='bookinfoTable'>");
          $.each(results, function(key, value) {
              $('.bookinfoTable').append("<tr><td>"+value.bookName+"</td>"+
