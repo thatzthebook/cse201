@@ -12,11 +12,10 @@ function toggleMenu(x) {
     }
   }
 $.getJSON('book/readDefault.php', function(results) {
-  $('.content').append("<div class='row'></div>");
   $.each(results, function(key, value) {
-      $('.row').append("<div id='box'><h3>"+value.bookName+"</h3></div>"+
-        "<div id='box'><h3>"+value.author+"<h3></div>"+
-        "<div id='box'><img onclick=\"showBookInfo('bookinfo')\" src="+value.filePath+"></div>");
+      $('.row').append("<div class='box'><h3>"+value.bookName+"</h3></div><br>"+
+        "<div class='box'><h3>"+value.author+"<h3></div><br>"+
+        "<div class='box'><img onclick=\"showBookInfo('bookinfo')\" src="+value.filePath+"></div><br>");
   }); 
 });
 
