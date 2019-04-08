@@ -1,7 +1,3 @@
-* {
-  margin: 0;
-}
-
 @import url("https://fonts.googleapis.com/css?family=Raleway");
 
 :root {
@@ -11,6 +7,27 @@
      --modalColor: #34495E;
      --contentColor: rgb(90, 7, 7);
  }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tr:nth-of-type(odd){
+  background: #eee;
+}
+
+th {
+  background: #333;
+  color: white;
+  font-weight: bold;
+}
+
+td, th {
+  padding: 6px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
 
  body html {
      margin: 0;
@@ -61,7 +78,7 @@ h1 {
   cursor: pointer;
 }
 img {
-  width:150;
+  width:150px;
   height:200px;
 
 }
@@ -133,6 +150,9 @@ ul.sidenav li a:hover:not(.active) {
 }
 [class*='box'] {
   flex: 1;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
   color:white;
 }
 
@@ -232,15 +252,6 @@ span.psw {
 }
 
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
 
 div.content {
   text-align: center;
@@ -313,13 +324,47 @@ div.content {
 
 }
 
+@media screen and (max-width: 760px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  th {
+    display: none;
+  }
+
+  tr{ border: 1px solid #ccc;}
+
+  td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    white-space: wrap;
+  }
+  td:nth-of-type(1):before { content:"Book Name"; }
+  td:nth-of-type(2):before { content:"Author"; }
+  td:nth-of-type(3):before { content:"Book Cover"; }
+  td:nth-of-type(4):before { content:"Addition"; }
+  td:nth-of-type(5):before { content:"Library"; }
+  td:nth-of-type(6):before { content:"Library Address"; }
+  td:nth-of-type(7):before { content:"Checked Out By"; }
+
+}
+
 @media screen and (max-width: 500px) {
   ul.sidenav li a {
     text-align: center;
   }
   img {
-    width:128px;
-    height:150px
+    width:100px;
+    height:125px
   }
  
   div.content {
@@ -327,4 +372,19 @@ div.content {
   }
 }
 
-
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+ }
+ .cancelbtn {
+    width: 100%;
+ }
+  ul.sidenav li a {
+    text-align: center;
+  }
+ 
+  div.content {
+    position: center;
+  }
+}
