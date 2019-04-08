@@ -28,12 +28,20 @@
         }
 
         public function readOne($id) {
-            $stmt = $this->con->prepare("SELECT * FROM books WHERE bookID=:bookID");
-            $stmt->bindParam(":bookID", $id, PDO::PARAM_STR);
-            return json_encode($stmt->fetchAll());
 
+            $query = "SELECT b.bookName, b.author,b.filePath, b.bookAddition, lib.libraryName, lib.libraryAddress, usr.username  FROM books b 
+            JOIN libraries lib ON b.libraryID = lib.libraryID
+            JOIN users usr ON b.userID = usr.userID
+            WHERE bookID=:bookID";
+            $stmt = $this->con->prepare($query);
+            $stmt->bindParam(":bookID", $id, PDO::PARAM_INT);
+            $stmt->execute();
+            return json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }
 
+        public function addBook($bookName){
+
+        }
     }
 
 ?>

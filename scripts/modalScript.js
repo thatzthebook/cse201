@@ -5,16 +5,30 @@ function showElement(i) {
     document.getElementById(i).style.display='block';
 }
 
-function showBookInfo(i) {
-    document.getElementById(i).style.display='block';
-    $.getJSON('book/readDefault.php?bookID='+i, function(results) {
-        $('.bookinfoContent').append("<table class='bookinfoTable'>");
+function showBookInfo(id,i) {
+    $('.bookinfoTable').empty();
+    $.getJSON("book/readDefault.php?bookID="+id, function(results) {
          $.each(results, function(key, value) {
-             $('.bookinfoTable').append("<tr><td>"+value.bookName+"</td>"+
+            $('.bookinfoTable').append("<tr id="+key+">"+
+            "<th>Book Name</th>"+
+            "<th>Author</th>"+
+            "<th>Book Cover</th>"+
+            "<th>Addition</th>"+
+            "<th>Library</th>"+
+            "<th>Library Address</th>"+
+            "<th>Checked Out By</th>"+         
+            "</tr>");
+             $(".bookinfoTable").append("<tr id="+key+1+">"+
+             "<td>"+value.bookName+"</td>"+
                "<td>"+value.author+"</td>"+
-               "<td><img src="+value.filePath+"></td><td>"+
-               value.userID+"</td><td>"+value.libraryName+"</td></tr>");
+               "<td><img src="+value.filePath+"></td>"+
+               "<td>"+value.bookAddition+"</td>"+
+               "<td>"+value.libraryName+"</td>"+
+               "<td>"+value.libraryAddress+"</td>"+
+               "<td>"+value.username+"</td>"+
+               "</tr>");
          }); 
+         document.getElementById(i).style.display='block';
        });
 }
 

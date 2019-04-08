@@ -6,9 +6,10 @@
 
 :root {
       -webkit-appearance: none;
-     --navBackground: rgb(52, 73, 94);
-     --formColor: #34495E;
+     --navBackground: rgb(57, 66, 80);
+     --formColor: rgb(55, 57, 59);
      --modalColor: #34495E;
+     --contentColor: rgb(90, 7, 7);
  }
 
  body html {
@@ -36,7 +37,7 @@ h3 {
 
 h1 {
     text-align: center;
-    color: white;
+    color: rgb(255,255,255);
 }
 
 .logout {
@@ -123,19 +124,17 @@ ul.sidenav li a:hover:not(.active) {
   background: var(--navBackground);
   color: red;
 }
-.row {
+[class*='row'] {
+  flex: 1;
   display: flex;
-  flex-wrap: wrap;
   border-bottom-style: solid;
   border-color:var(--navBackground);
   border-bottom-width: 1px;
 }
-.box {
-  flex:1;
+[class*='box'] {
+  flex: 1;
+  color:white;
 }
-
-
-
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
@@ -245,10 +244,13 @@ span.psw {
 
 div.content {
   text-align: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  display: flex;
   margin-left: 0;
   padding: 1px 16px;
   height: auto;
-  background-color: rgb(90, 7, 7);
+  background-color: var(--contentColor);
 }
 
 .barContainer {

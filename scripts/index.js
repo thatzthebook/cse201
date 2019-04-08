@@ -13,9 +13,10 @@ function toggleMenu(x) {
   }
 $.getJSON('book/readDefault.php', function(results) {
   $.each(results, function(key, value) {
-      $('.row').append("<div class='box'><h3>"+value.bookName+"</h3></div><br>"+
+      $('.content').append("<div class='row"+key+"'></div>")
+      $('.row'+key+'').append("<div class='box'><h3>"+value.bookName+"</h3></div><br>"+
         "<div class='box'><h3>"+value.author+"<h3></div><br>"+
-        "<div class='box'><img onclick=\"showBookInfo('bookinfo')\" src="+value.filePath+"></div><br>");
+        "<div class='box'><img onclick=\"showBookInfo("+value.bookID+", 'bookinfo')\" src="+value.filePath+"></div><br>");
   }); 
 });
 
