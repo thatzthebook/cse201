@@ -12,39 +12,42 @@ function toggleMenu(x) {
     }
   }
 $.getJSON('book/read.php', function(results) {
-  $.each(results, function(key, value) {
-      $('.content').append("<div class='row"+key+"'></div>")
-      $('.row'+key+'').append("<div class='box'><h3>"+value.bookName+"</h3></div><br>"+
-        "<div class='box'><h3>"+value.author+"<h3></div><br>"+
-        "<div class='box'><img onclick=\"showBookInfo("+value.bookID+", 'bookinfo')\" src="+value.filePath+"></div><br>");
-  }); 
+  mainPage(results); 
 });
 
-function fill(value) {
-  $(".search").val(value);
-  $(".search").hide();
+function mainPage(results) {
+  $.each(results, function(key, value) {
+    $('.content').append("<div class='row"+key+"'></div>")
+    $('.row'+key+'').append("<div class='box'><h3>"+value.bookName+"</h3></div><br>"+
+      "<div class='box'><h3>"+value.author+"<h3></div><br>"+
+      "<div class='box'><img onclick=\"showBookInfo("+value.bookID+", 'bookinfo')\" src="+value.filePath+"></div><br>");
+}); 
 }
 
-$(document).ready(function() {
-  //on key up search
-  $(".search").keyup(function () {
-    var name = $(".search").val();
 
-    if(name == "") {
-      $("#display").html("");
-    } else {
+$(document).ready(function() {
+  var searchBox = document.getElementById("searchText");
+  //on key up search
+  $('#searchText').keyup(function () {
+    var search = searchBox.value;
+    if(search == "") {
       $('.content').empty();
-      $.getJSON('book/read.php?search='+name, function(results) {
-        $.each(results, function(key, value) {
-          $('.content').append("<div class='row"+key+"'></div>")
-          $('.row'+key+'').append("<div class='box'><h3>"+value.bookName+"</h3></div><br>"+
-            "<div class='box'><h3>"+value.author+"<h3></div><br>"+
-            "<div class='box'><img onclick=\"showBookInfo("+value.bookID+", 'bookinfo')\" src="+value.filePath+"></div><br>");
-      });
+      $.getJSON('book/read.php', function(results) {
+        mainPage(results);
+      })
+    } else if(search.slice(-1) ==="%"){
+      $('.content').empty();
+      $.getJSON('book/read.php?search='+search, function(results) {
+       mainPage(results);
+      })
+    }else {
+     search= search+"%";
+      $('.content').empty();
+      $.getJSON('book/read.php?search='+search, function(results) {
+      mainPage(results);
       })
     }
   })
-
 })
  
 
@@ -54,7 +57,7 @@ function checkPassword(form) {
     password2 = form.repassword.value;
 
   if (password1 != password2) {
-    alert("\nPassword did not match: please try again")
+    alert("Password did not match: please try again")
     return false;
   }else {
     return true;

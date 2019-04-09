@@ -45,6 +45,7 @@
 
         public function searchBook($search){
             $query = "SELECT * FROM books WHERE bookName LIKE :search LIMIT 10";
+            //$search = "$search%";
             $stmt = $this->con->prepare($query);
             $stmt->bindParam(":search", $search, PDO::PARAM_STR);
             $stmt->execute();
