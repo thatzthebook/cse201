@@ -31,9 +31,9 @@ $(document).ready(function() {
   $('#searchText').keyup(function () {
     var search = searchBox.value;
     if(search == "") {
-      $('.content').empty();
       $.getJSON('book/read.php', function(results) {
         mainPage(results);
+        location.reload(true);
       })
     } else if(search.slice(-1) ==="%"){
       $('.content').empty();

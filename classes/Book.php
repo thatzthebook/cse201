@@ -44,10 +44,11 @@
         }
 
         public function searchBook($search){
-            $query = "SELECT * FROM books WHERE bookName LIKE :search LIMIT 10";
+            $query = "SELECT * FROM books WHERE bookName LIKE :search OR author LIKE :author";
             //$search = "$search%";
             $stmt = $this->con->prepare($query);
             $stmt->bindParam(":search", $search, PDO::PARAM_STR);
+            $stmt->bindParam(":author", $search, PDO::PARAM_STR);
             $stmt->execute();
             return json_encode($stmt->fetchAll(pdo::FETCH_ASSOC));
         }
