@@ -26,8 +26,11 @@
                 <span class="logout" ><li><a href="/cse201/destroy.php">Log Out</a></li></span>
                 <li><a onclick="showElement('addUserID')">Register</a></li>
             </ul>
-
-            <div id="addUserID" class="modal">
+<div id="searchBar" class="search">
+    <input type='text' placeholder="Search" name='search' >
+    <div id="display"></div>
+</div>
+<div id="addUserID" class="modal">
 
 <form class="modal-content animate" onSubmit="return checkPassword(this)" action="/cse201/user/addUser.php" method="POST">
     <span onclick="document.getElementById('addUserID').style.display = 'none'" class="close" title="Close Modal">&times;</span>

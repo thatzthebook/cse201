@@ -14,6 +14,12 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
         $book = new Book($db);
         $data = $book->readOne($id);
         echo $data;
+    }else if(isset($_GET['search'])) {
+        $search=htmlspecialchars($_GET['search']);
+        header('Content-Type: application/json');
+        $book = new boOK($db);
+        $data = $book->searchBook($search);
+        echo $data;
     }else {
         header('Content-Type: application/json');
         $book = new Book($db);

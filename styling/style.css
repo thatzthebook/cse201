@@ -23,6 +23,26 @@ th {
   font-weight: bold;
 }
 
+.search {
+  background: var(--contentColor);
+  width: 100%;
+  text-align: center;
+}
+
+.suggestions {
+  display: inline-block;
+
+}
+
+div.search input {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
 td, th {
   padding: 6px;
   border: 1px solid #ccc;
@@ -157,7 +177,8 @@ ul.sidenav li a:hover:not(.active) {
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+
+div.modal [type=text], div.modal input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -165,6 +186,7 @@ input[type=text], input[type=password] {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+
 
 /* Set a style for all buttons */
 button {
@@ -343,6 +365,8 @@ div.content {
 
   td:before {
     position: absolute;
+    background: #333;
+    color: #FFF;
     top: 6px;
     left: 6px;
     width: 45%;

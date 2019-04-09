@@ -7,7 +7,7 @@ function showElement(i) {
 
 function showBookInfo(id,i) {
     $('.bookinfoTable').empty();
-    $.getJSON("book/readDefault.php?bookID="+id, function(results) {
+    $.getJSON("book/read.php?bookID="+id, function(results) {
          $.each(results, function(key, value) {
             $('.bookinfoTable').append("<tr id="+key+">"+
             "<th>Book Name</th>"+

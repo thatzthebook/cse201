@@ -11,7 +11,7 @@ function toggleMenu(x) {
       x.classList.toggle("change");
     }
   }
-$.getJSON('book/readDefault.php', function(results) {
+$.getJSON('book/read.php', function(results) {
   $.each(results, function(key, value) {
       $('.content').append("<div class='row"+key+"'></div>")
       $('.row'+key+'').append("<div class='box'><h3>"+value.bookName+"</h3></div><br>"+
@@ -20,7 +20,32 @@ $.getJSON('book/readDefault.php', function(results) {
   }); 
 });
 
+function fill(value) {
+  $(".search").val(value);
+  $(".search").hide();
+}
 
+$(document).ready(function() {
+  //on key up search
+  $(".search").keyup(function () {
+    var name = $(".search").val();
+
+    if(name == "") {
+      $("#display").html("");
+    } else {
+      $('.content').empty();
+      $.getJSON('book/read.php?search='+name, function(results) {
+        $.each(results, function(key, value) {
+          $('.content').append("<div class='row"+key+"'></div>")
+          $('.row'+key+'').append("<div class='box'><h3>"+value.bookName+"</h3></div><br>"+
+            "<div class='box'><h3>"+value.author+"<h3></div><br>"+
+            "<div class='box'><img onclick=\"showBookInfo("+value.bookID+", 'bookinfo')\" src="+value.filePath+"></div><br>");
+      });
+      })
+    }
+  })
+
+})
  
 
 
