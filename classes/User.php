@@ -22,7 +22,6 @@
             } else {
                 return false;
             }
-            $this->con = null;
         }
 
         public function addUser($username, $password, $name, $position) {
@@ -36,12 +35,11 @@
                 'cost' => 12
             ];
             $passhash = password_hash($password, PASSWORD_BCRYPT, $options);
-            $statement = $this->con->prepare('INSERT INTO users (username, name, passhash, position) 
-            VALUES (:username, :name, :passhash, :position)');
+            $statement = $this->con->prepare('INSERT INTO users (username, name, passhash) 
+            VALUES (:username, :name, :passhash)');
             $statement->bindParam(":username", $username);
             $statement->bindParam(":passhash", $passhash);
             $statement->bindParam(":name", $name);
-            $statement->bindParam(":position", $position);
 
             $statement->execute();
             $this->con = null;

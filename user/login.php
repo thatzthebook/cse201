@@ -1,6 +1,6 @@
 <?php
-require_once 'database.php';
-include 'classes/User.php';
+include '../database.php';
+include '../classes/User.php';
 session_start();
 error_log(E_ALL);
 ini_set('display_errors', 1);
@@ -12,13 +12,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             die('Username and/or password does not exist!');
             header('location: /cse201/index.php');
         }else {
-            
+            $database = new Database();
+            $db = $database->connect();
             $username = htmlspecialchars($_POST['username']);
             $password = htmlspecialchars($_POST['password']);
-            $user = new User($pdo);
+            $user = new User($db);
             if($user->validateUser($username, $password)){
-                echo "success";
-                $_SESSION['user'] = $results['username'];
+                echo "<script>document.getElementById('login').style.display='none'</script>";
+                echo "<script>document.getElementById('logout').style.display='block'</script>";
+                header('location: /cse201/index.php');
+                $_SESSION['user'] = $_POST['username'];
             }else{
                 echo "fail";
             }

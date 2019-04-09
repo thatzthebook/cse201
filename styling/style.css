@@ -1,14 +1,53 @@
-* {
-  margin: 0;
-}
-
 @import url("https://fonts.googleapis.com/css?family=Raleway");
 
 :root {
       -webkit-appearance: none;
-     --navBackground: rgb(52, 73, 94);
-     --formColor: #34495E;
+     --navBackground: rgb(57, 66, 80);
+     --formColor: rgb(55, 57, 59);
+     --modalColor: #34495E;
+     --contentColor: rgb(90, 7, 7);
  }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tr:nth-of-type(odd){
+  background: #eee;
+}
+
+th {
+  background: #333;
+  color: white;
+  font-weight: bold;
+}
+
+.search {
+  background: var(--contentColor);
+  width: 100%;
+  text-align: center;
+}
+
+.suggestions {
+  display: inline-block;
+
+}
+
+div.search input {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+td, th {
+  padding: 6px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
 
  body html {
      margin: 0;
@@ -35,10 +74,10 @@ h3 {
 
 h1 {
     text-align: center;
-    color: white;
+    color: rgb(255,255,255);
 }
 
-.logout {
+#logout {
   display: none;
 }
 
@@ -59,10 +98,11 @@ h1 {
   cursor: pointer;
 }
 img {
-  width:150;
+  width:150px;
   height:200px;
 
 }
+
 input[name="login"]{
   background-color: var(--navBackground);
   border: none;
@@ -121,37 +161,24 @@ ul.sidenav li a:hover:not(.active) {
   background: var(--navBackground);
   color: red;
 }
-div.row {
+[class*='row'] {
+  flex: 1;
   display: flex;
-  flex-wrap: wrap;
   border-bottom-style: solid;
   border-color:var(--navBackground);
   border-bottom-width: 1px;
 }
-div.box {
-  flex:1;
-  margin: 4em;
+[class*='box'] {
+  flex: 1;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  color:white;
 }
-div.box1 {
-  flex:2;
-}
-
-:root {
-  --modalColor: #34495E;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.box {
-  border-color: #000;
-  border: 3px;
-}
-
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+
+div.modal [type=text], div.modal input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -159,6 +186,7 @@ input[type=text], input[type=password] {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+
 
 /* Set a style for all buttons */
 button {
@@ -246,22 +274,16 @@ span.psw {
 }
 
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
 
 div.content {
   text-align: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  display: flex;
   margin-left: 0;
   padding: 1px 16px;
   height: auto;
-  background-color: rgb(90, 7, 7);
+  background-color: var(--contentColor);
 }
 
 .barContainer {
@@ -324,13 +346,49 @@ div.content {
 
 }
 
+@media screen and (max-width: 760px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  th {
+    display: none;
+  }
+
+  tr{ border: 1px solid #ccc;}
+
+  td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    position: absolute;
+    background: #333;
+    color: #FFF;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    white-space: wrap;
+  }
+  td:nth-of-type(1):before { content:"Book Name"; }
+  td:nth-of-type(2):before { content:"Author"; }
+  td:nth-of-type(3):before { content:"Book Cover"; }
+  td:nth-of-type(4):before { content:"Addition"; }
+  td:nth-of-type(5):before { content:"Library"; }
+  td:nth-of-type(6):before { content:"Library Address"; }
+  td:nth-of-type(7):before { content:"Checked Out By"; }
+
+}
+
 @media screen and (max-width: 500px) {
   ul.sidenav li a {
     text-align: center;
   }
   img {
-    width:128px;
-    height:150px
+    width:100px;
+    height:125px
   }
  
   div.content {
@@ -338,4 +396,19 @@ div.content {
   }
 }
 
-
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+ }
+ .cancelbtn {
+    width: 100%;
+ }
+  ul.sidenav li a {
+    text-align: center;
+  }
+ 
+  div.content {
+    position: center;
+  }
+}

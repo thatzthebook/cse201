@@ -1,8 +1,8 @@
 ﻿CREATE TABLE users (
     userID INT(1) AUTO_INCREMENT NOT NULL PRIMARY KEY,
     username VARCHAR(100) NOT NULL,
-    name VARCHAR(100) NOT NULL,
-    passhash VARCHAR(255) NOT NULL
+    position VARCHAR(100) NOT NULL,
+    passhash VARCHAR(255) NOT NULL,
 );
 
 CREATE TABLE libraries (
